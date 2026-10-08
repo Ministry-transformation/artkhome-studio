@@ -1,0 +1,17 @@
+---
+const home = `${import.meta.env.BASE_URL}es/`;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${home}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={home} />
+    <title>ArtKHome Studio</title>
+  </head>
+  <body>
+    <p>Redirigiendo a <a href={home}>ArtKHome Studio</a>…</p>
+    <script is:inline define:vars={{ home }}>window.location.replace(home);</script>
+  </body>
+</html>
