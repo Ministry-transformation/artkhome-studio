@@ -1,12 +1,17 @@
 ---
-import { address, nav, phone, phoneDisplay, sitePath } from '../data/site';
+import { address, nav as spanishNav, navUk, phone, phoneDisplay, sitePath } from '../data/site';
 import '../styles/global.css';
 
-const { title, description, active = '' } = Astro.props;
-const root = sitePath('/es/');
+const { title, description, active = '', language = 'es', alternateHref = sitePath('/uk/') } = Astro.props;
+const isUkrainian = language === 'uk';
+const root = sitePath(isUkrainian ? '/uk/' : '/es/');
+const nav = isUkrainian ? navUk : spanishNav;
+const currentRoute = sitePath(active || (isUkrainian ? '/uk/' : '/es/'));
+const spanishHref = isUkrainian ? alternateHref : currentRoute;
+const ukrainianHref = isUkrainian ? currentRoute : alternateHref;
 ---
 <!doctype html>
-<html lang="es">
+<html lang={isUkrainian ? 'uk' : 'es'} class:list={[isUkrainian && 'locale-uk']}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,20 +21,25 @@ const root = sitePath('/es/');
     <link rel="icon" type="image/svg+xml" href={sitePath('/favicon.svg')} />
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#contenido">{isUkrainian ? 'Перейти до вмісту' : 'Saltar al contenido'}</a>
     <header class="site-header">
-      <a class="wordmark site-wordmark" href={root} aria-label="ArtKHome Studio, inicio" aria-current={active === root ? 'page' : undefined}>
+      <a class="wordmark site-wordmark" href={root} aria-label={isUkrainian ? 'ArtKHome Studio, головна' : 'ArtKHome Studio, inicio'} aria-current={active === root ? 'page' : undefined}>
         <img class="brand-mark" src={sitePath('/images/brand/artkhome-mark.webp')} alt="" aria-hidden="true" width="54" height="54" />
         <span class="brand-wordmark"><strong>ArtKHome</strong><small>Studio</small></span>
       </a>
-      <nav class="desktop-nav" aria-label="Navegación principal">
+      <nav class="desktop-nav" aria-label={isUkrainian ? 'Головна навігація' : 'Navegación principal'}>
         {nav.map((item) => <a class:list={[active === item.href ? 'current' : '']} aria-current={active === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>)}
       </nav>
-      <a class="header-cta" href={sitePath('/es/contacto/')}>Consultar <span aria-hidden="true">↗</span></a>
+      <a class="header-cta" href={sitePath(isUkrainian ? '/uk/kontakty/' : '/es/contacto/')}>{isUkrainian ? 'Зв’язатися' : 'Consultar'} <span aria-hidden="true">↗</span></a>
+      <nav class="language-switch" aria-label={isUkrainian ? 'Мова сайту' : 'Idioma del sitio'}>
+        <a href={spanishHref} lang="es" aria-label="Español" aria-current={!isUkrainian ? 'page' : undefined}>ES</a>
+        <span aria-hidden="true">·</span>
+        <a href={ukrainianHref} lang="uk" aria-label="Українська" aria-current={isUkrainian ? 'page' : undefined}>УКР</a>
+      </nav>
       <details class="mobile-nav">
-        <summary aria-label="Abrir menú">Menú <span aria-hidden="true">＋</span></summary>
-        <nav aria-label="Navegación móvil">
-          <a aria-current={active === root ? 'page' : undefined} href={root}>Inicio</a>
+        <summary aria-label={isUkrainian ? 'Відкрити меню' : 'Abrir menú'}>{isUkrainian ? 'Меню' : 'Menú'} <span aria-hidden="true">＋</span></summary>
+        <nav aria-label={isUkrainian ? 'Мобільна навігація' : 'Navegación móvil'}>
+          <a aria-current={active === root ? 'page' : undefined} href={root}>{isUkrainian ? 'Головна' : 'Inicio'}</a>
           {nav.map((item) => <a aria-current={active === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>)}
         </nav>
       </details>
@@ -37,19 +47,19 @@ const root = sitePath('/es/');
     <main id="contenido"><slot /></main>
     <footer class="site-footer">
       <div class="footer-top">
-        <a class="wordmark wordmark-light" href={root} aria-label="ArtKHome Studio, inicio">
+        <a class="wordmark wordmark-light" href={root} aria-label={isUkrainian ? 'ArtKHome Studio, головна' : 'ArtKHome Studio, inicio'}>
           <span>ArtKHome</span><small>STUDIO</small>
         </a>
-        <p class="footer-line">Música <i>·</i> arte <i>·</i> creatividad</p>
-        <a class="footer-cta" href={`tel:${phone}`}>Llamar al centro <span aria-hidden="true">↗</span></a>
+        <p class="footer-line">{isUkrainian ? 'Музика' : 'Música'} <i>·</i> {isUkrainian ? 'мистецтво' : 'arte'} <i>·</i> {isUkrainian ? 'творчість' : 'creatividad'}</p>
+        <a class="footer-cta" href={`tel:${phone}`}>{isUkrainian ? 'Зателефонувати' : 'Llamar al centro'} <span aria-hidden="true">↗</span></a>
       </div>
       <div class="footer-bottom">
-        <p>{address}</p>
+        <p>{isUkrainian ? 'Calle Cariño, 20, Торрев’єха, Аліканте, Іспанія' : address}</p>
         <a href={`tel:${phone}`}>{phoneDisplay}</a>
         <span>Instagram: @artkhome</span>
       </div>
-      <p class="footer-note">Consulta por teléfono las actividades, horarios y condiciones disponibles.</p>
-      <p class="footer-credit">Sitio web desarrollado por el <a href="https://ministry-transformation.github.io/" target="_blank" rel="noopener noreferrer">Ministerio de Transformación</a>.</p>
+      <p class="footer-note">{isUkrainian ? 'Уточнюйте телефоном актуальні заняття, розклад і умови.' : 'Consulta por teléfono las actividades, horarios y condiciones disponibles.'}</p>
+      <p class="footer-credit">{isUkrainian ? 'Сайт розробило ' : 'Sitio web desarrollado por el '}<a href="https://ministry-transformation.github.io/" target="_blank" rel="noopener noreferrer">{isUkrainian ? 'Міністерство трансформації' : 'Ministerio de Transformación'}</a>.</p>
     </footer>
   </body>
 </html>

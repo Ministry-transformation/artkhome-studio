@@ -1,0 +1,34 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath, disciplinesUk } from '../../data/site';
+import OfferingGrid from '../../components/OfferingGrid.astro';
+---
+<SiteLayout language="uk" alternateHref={sitePath('/es/')} title="Музика й мистецтво в Торрев’єсі" description="Музика, малювання, творчі майстерні та іспанська для іноземців у ArtKHome Studio, Торрев’єха." active="/uk/">
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> Творчий центр · Торрев’єха</p>
+      <h1>Музика й мистецтво<br /><em>у Торрев’єсі</em></h1>
+      <p class="hero-intro">Творчий простір для всієї родини. Музика, мистецтво та заняття, які надихають відкривати й ділитися.</p>
+      <a class="button button-yellow" href={sitePath('/uk/kontakty/')}>Дізнатися про заняття <span aria-hidden="true">↗</span></a>
+      <p class="hero-script">Музика<br />Мистецтво<br /><span>Спільнота</span></p>
+    </div>
+    <figure class="hero-art"><img class="hero-image" src={sitePath('/images/artwork/hero-artwork.webp')} alt="Абстрактна композиція: синя керамічна форма, золота куля й темна лінія на тлі кольору слонової кістки" fetchpriority="high" /><figcaption class="art-caption">ТВОРИТИ<br />ЗНАЧИТЬ<br />ДІЛИТИСЯ</figcaption></figure>
+    <div class="hero-footnote"><span>01 — 06</span><span>Обирайте заняття</span><span class="scroll-cue" aria-hidden="true">↓</span></div>
+  </section>
+
+  <section class="navigator wrap" aria-labelledby="navigator-title">
+    <div class="section-heading"><p class="eyebrow">Відкрийте ArtKHome</p><h2 id="navigator-title">Що бажаєте <em>відкрити?</em></h2></div>
+    <OfferingGrid language="uk" />
+  </section>
+
+  <section class="music-band wrap">
+    <div class="music-intro"><p class="eyebrow">01 / Музика</p><h2>Перший крок.<br /><em>У власному темпі.</em></h2><p>Заняття, що допомагають відкривати музику й рухатися крок за кроком. Зателефонуйте, щоб дізнатися про доступні формати та розклад.</p><p class="music-age-callout"><b>3+</b><span>Музичний розвиток від 3 років</span></p><a class="text-link" href={sitePath('/uk/muzyka/')}>Дізнатися про музику <span aria-hidden="true">↗</span></a></div>
+    <div class="discipline-board"><p class="board-label">НАПРЯМИ</p><div class="discipline-list">{disciplinesUk.map((item, i) => <span><b>0{i + 1}</b>{item}</span>)}</div><p class="board-foot">Наявність і умови<br />уточнюйте в центрі.</p></div>
+  </section>
+
+  <section class="proof-section">
+    <div class="proof-inner wrap"><div class="proof-stamp">ТОРРЕВ’ЄХА<br /><span>10·05·2026</span></div><div><p class="eyebrow">Музика об’єднує</p><h2>Музика звучить<br /><em>для кожного.</em></h2><p>Учні Academia ArtKHome виступили разом з Orquesta Casanovas на сімейному концерті «Un conciertazo para todos» у міському театрі Торрев’єхи.</p><a class="text-link text-link-light" href="https://www.diariodelavega.com/la-casanovas-orquesta-vuelve-a-llenar-el-teatro-de-torrevieja-en-su-tercer-family-concert/" target="_blank" rel="noreferrer">Читати новину <span aria-hidden="true">↗</span></a></div><div class="proof-note">Підтверджений<br />виступ<br /><span>Diario de la Vega · 13.05.2026</span></div></div>
+  </section>
+
+  <section class="contact-strip wrap"><div><p class="eyebrow">Ми в Торрев’єсі</p><h2>Яке заняття<br /><em>вас цікавить?</em></h2><p>Дізнайтеся в центрі, які заняття доступні зараз.</p></div><div class="contact-stamp"><span class="stamp-ring">ARTKHOME<br />STUDIO<br /><b>✳</b><small>TORREVIEJA</small></span></div><a class="button button-dark" href={sitePath('/uk/kontakty/')}>Контакти <span aria-hidden="true">↗</span></a></section>
+</SiteLayout>

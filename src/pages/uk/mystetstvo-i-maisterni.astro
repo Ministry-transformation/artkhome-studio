@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath } from '../../data/site';
+---
+<SiteLayout language="uk" alternateHref={sitePath('/es/arte-y-talleres/')} title="Мистецтво, малювання й майстерні" description="Малювання та творчі майстерні в ArtKHome Studio, Торрев’єха." active="/uk/mystetstvo-i-maisterni/">
+  <section class="page-hero wrap"><p class="eyebrow">02 / Мистецтво й творчість</p><h1>Звільніть місце<br /><em>для уяви.</em></h1><p class="page-lead">Малювання й творчі майстерні є серед занять ArtKHome Studio. Уточнюйте, які програми проводять зараз і для кого вони підходять.</p><a class="button button-yellow" href={sitePath('/uk/kontakty/')}>Запитати про майстерні <span aria-hidden="true">↗</span></a><img class="page-art page-art-image" src={sitePath('/images/artwork/painting-object.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" /></section>
+  <section class="content-section wrap"><div class="section-heading"><p class="eyebrow">Творіть по-своєму</p><h2>Мистецтво й творчість<br /><em>у студії.</em></h2><p>Центр вказує малювання й майстерні серед своїх занять. Актуальну програму, вік учасників, матеріали та дати уточнюйте безпосередньо в ArtKHome.</p></div><div class="art-note-grid"><article><span class="note-number">A</span><h3>Малювання</h3><p>Запитайте про доступні заняття з малювання.</p></article><article><span class="note-number">B</span><h3>Творчі майстерні</h3><p>Дізнайтеся про теми, формат і найближчі дати.</p></article></div></section>
+  <section class="closing-cta"><div class="wrap closing-inner"><p class="eyebrow">Цікавить якийсь напрям?</p><h2>Запитайте про програму<br /><em>безпосередньо в центрі.</em></h2><a class="button button-yellow" href={sitePath('/uk/kontakty/')}>Зв’язатися з ArtKHome <span aria-hidden="true">↗</span></a></div></section>
+</SiteLayout>

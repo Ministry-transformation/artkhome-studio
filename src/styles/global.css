@@ -543,6 +543,11 @@ a:focus-visible,summary:focus-visible {
   box-shadow: 0 0 0 18px #0a211b,0 0 0 19px #f6f0e425,0 0 0 37px #0a211b,0 0 0 38px #f6f0e420;
   transform: rotate(35deg);
   pointer-events: none;
+  z-index: 0;
+}
+.site-footer>* {
+  position: relative;
+  z-index: 1;
 }
 .footer-top {
   display: flex;
@@ -1462,6 +1467,89 @@ a:focus-visible,summary:focus-visible {
     font-size: 33px;
   }
 }
+
+/* Keep both locales usable in the tablet range, where the full desktop nav no longer fits. */
+@media(max-width:900px) {
+  .site-header {
+    gap: 12px;
+  }
+  .desktop-nav,.header-cta {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  .mobile-nav summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid var(--ink);
+    border-radius: 25px;
+    padding: 9px 12px;
+  }
+  .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-nav nav {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    width: min(270px,calc(100vw - 36px));
+    padding: 12px;
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 30px #10241e20;
+    display: grid;
+    gap: 0;
+  }
+  .mobile-nav nav a {
+    padding: 12px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-nav nav a:last-child {
+    border: 0;
+  }
+  .language-switch {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .hero {
+    display: flex;
+    min-height: 0;
+    padding-top: 42px;
+    padding-bottom: 55px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-copy {
+    padding: 0;
+  }
+  .hero-footnote {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    margin-top: 18px;
+  }
+}
+@media(min-width:681px) and (max-width:900px) {
+  .hero h1 {
+    font-size: clamp(46px,7.5vw,66px);
+    letter-spacing: -2px;
+  }
+  .hero-script {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: max-content;
+    margin: 12px 0 0 auto;
+    font-size: 18px;
+    transform: rotate(-7deg);
+  }
+}
 @media(min-width:681px) {
   .hero h1 {
     font-size: clamp(58px,6vw,78px);
@@ -1802,5 +1890,232 @@ a:focus-visible,summary:focus-visible {
   .brand-mark {
     width: 52px;
     height: 52px;
+  }
+}
+
+/* Bilingual navigation and longer Ukrainian copy. */
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.language-switch a {
+  padding: 7px 2px;
+  text-decoration: none;
+  color: #59615a;
+}
+.language-switch a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.locale-uk .desktop-nav {
+  gap: clamp(10px,1.5vw,22px);
+}
+.locale-uk .desktop-nav a {
+  font-size: 11px;
+}
+.locale-uk .hero h1,.locale-uk .page-hero h1 {
+  letter-spacing: -2.2px;
+  font-size: clamp(54px,6.1vw,78px);
+}
+.locale-uk .hero-intro,.locale-uk .page-lead {
+  max-width: 500px;
+}
+.locale-uk .offering-card {
+  min-height: 224px;
+}
+.locale-uk .offering-title {
+  line-height: 1.08;
+}
+.locale-uk .offering-note {
+  line-height: 1.45;
+}
+.locale-uk .button {
+  line-height: 1.3;
+  text-align: center;
+}
+.locale-uk .site-footer .footer-line {
+  white-space: normal;
+}
+@media(max-width:900px) {
+  .locale-uk .desktop-nav,.locale-uk .header-cta {
+    display: none;
+  }
+  .locale-uk .mobile-nav {
+    display: block;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  .locale-uk .mobile-nav summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid var(--ink);
+    border-radius: 25px;
+    padding: 9px 12px;
+  }
+  .locale-uk .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+  .locale-uk .mobile-nav nav {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    width: min(270px,calc(100vw - 36px));
+    padding: 12px;
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 30px #10241e20;
+    display: grid;
+    gap: 0;
+  }
+  .locale-uk .mobile-nav nav a {
+    padding: 12px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .locale-uk .mobile-nav nav a:last-child {
+    border: 0;
+  }
+  .locale-uk .site-header {
+    gap: 12px;
+  }
+  .locale-uk .language-switch {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .locale-uk .desktop-nav {
+    gap: 8px;
+  }
+  .locale-uk .desktop-nav a {
+    font-size: 10px;
+  }
+  .locale-uk .site-wordmark {
+    width: 150px;
+  }
+  .locale-uk .language-switch {
+    gap: 4px;
+  }
+  .locale-uk .hero h1 {
+    font-size: clamp(44px,5.7vw,60px);
+    letter-spacing: -1.8px;
+  }
+  .locale-uk .hero-script {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: max-content;
+    margin: 12px 0 0 auto;
+    font-size: 18px;
+    transform: rotate(-7deg);
+  }
+}
+@media(max-width:680px) {
+  .language-switch {
+    margin-left: auto;
+    margin-right: 12px;
+    font-size: 11px;
+  }
+  .locale-uk .hero h1,.locale-uk .page-hero h1 {
+    font-size: clamp(40px,10.5vw,60px);
+    letter-spacing: -1.5px;
+    line-height: 1;
+  }
+  .locale-uk .offering-card,.locale-uk .offering-card:last-child {
+    min-height: 250px;
+  }
+  .locale-uk .offering-title {
+    min-height: 44px;
+    font-size: 18px;
+  }
+  .locale-uk .offering-note {
+    font-size: 10px;
+    padding-right: 12px;
+  }
+  .locale-uk .button {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .locale-uk .discipline-board:after {
+    width: 110px;
+    height: 110px;
+    right: -60px;
+    top: -74px;
+    box-shadow: none;
+  }
+}
+@media(max-width:380px) {
+  .locale-uk .art-note-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .locale-uk .art-note-grid article {
+    min-width: 0;
+    padding: 15px;
+  }
+  .locale-uk .art-note-grid h3 {
+    font-size: 19px;
+    overflow-wrap: anywhere;
+  }
+  .locale-uk .art-note-grid p {
+    overflow-wrap: anywhere;
+  }
+  .locale-uk .footer-top {
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 10px;
+  }
+  .locale-uk .footer-top .wordmark {
+    width: 132px;
+  }
+  .locale-uk .footer-cta {
+    padding: 10px 8px;
+    font-size: 9px;
+  }
+  .locale-uk .footer-line {
+    font-size: 17px;
+  }
+  .locale-uk .discipline-list {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .locale-uk .discipline-cards {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .locale-uk .discipline-card {
+    min-width: 0;
+    padding: 14px;
+  }
+  .locale-uk .discipline-card h3 {
+    font-size: 19px;
+  }
+  .locale-uk .offering-card,.locale-uk .offering-card:last-child {
+    min-height: 250px;
+  }
+  .locale-uk .offering-title {
+    font-size: 16px;
+  }
+  .locale-uk .contact-strip {
+    grid-template-columns: minmax(0,1fr) 80px;
+    gap: 10px;
+    min-width: 0;
+    overflow-x: clip;
+  }
+  .locale-uk .contact-stamp {
+    overflow: hidden;
+  }
+  .locale-uk .stamp-ring {
+    width: 78px;
+    height: 78px;
+    font-size: 8px;
+  }
+  .locale-uk .contact-strip h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
   }
 }

@@ -1,9 +1,10 @@
 ---
-import { offerings } from '../data/site';
-const { compact = false } = Astro.props;
+import { offerings, offeringsUk } from '../data/site';
+const { compact = false, language = 'es' } = Astro.props;
+const items = language === 'uk' ? offeringsUk : offerings;
 ---
 <div class:list={['offering-grid', compact && 'offering-grid-compact']}>
-  {offerings.map((item) => (
+  {items.map((item) => (
     <a class="offering-card" href={item.href}>
       <span class="offering-index">{item.number}</span>
       <img class="offering-object" src={item.image} alt="" loading="lazy" decoding="async" />

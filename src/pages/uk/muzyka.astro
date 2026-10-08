@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath, disciplinesUk } from '../../data/site';
+---
+<SiteLayout language="uk" alternateHref={sitePath('/es/clases-de-musica/')} title="Музичні заняття" description="Вокал, фортепіано, гітара, скрипка, сольфеджіо та хор в ArtKHome Studio у Торрев’єсі." active="/uk/muzyka/">
+  <section class="page-hero wrap"><p class="eyebrow">01 / Музика · Торрев’єха</p><h1>Знайдіть свій<br /><em>голос у музиці.</em></h1><p class="page-lead">На картці ArtKHome Studio вказані вокал, фортепіано, гітара, скрипка, сольфеджіо та хор, а також музичний розвиток від 3 років.</p><a class="button button-yellow" href={sitePath('/uk/kontakty/')}>Уточнити розклад і умови <span aria-hidden="true">↗</span></a><img class="page-art page-art-image" src={sitePath('/images/artwork/music-object.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" /></section>
+  <section class="content-section wrap"><div class="section-heading"><p class="eyebrow">Напрями, вказані центром</p><h2>Музика для <em>відкриттів.</em></h2></div><div class="discipline-cards">{disciplinesUk.map((item, i) => <article class="discipline-card"><span>0{i + 1}</span><h3>{item}</h3><p>Дізнайтеся в центрі про формат, розклад і наявність місць.</p></article>)}</div><article class="age-card"><span class="age-number">3+</span><div><p class="eyebrow">Музичний розвиток</p><h3>Простір для перших кроків у музиці.</h3><p>Музичний розвиток від 3 років зазначений на картці центру. Зателефонуйте, щоб уточнити програму й наявність місць.</p></div></article></section>
+  <section class="closing-cta"><div class="wrap closing-inner"><p class="eyebrow">Наступний крок</p><h2>Розкажіть, що<br /><em>хочете опанувати.</em></h2><a class="button button-yellow" href={sitePath('/uk/kontakty/')}>Зателефонувати до центру <span aria-hidden="true">↗</span></a></div></section>
+</SiteLayout>
