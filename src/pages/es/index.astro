@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath } from '../../data/site';
+import OfferingGrid from '../../components/OfferingGrid.astro';
+import { disciplines } from '../../data/site';
+---
+<SiteLayout title="Clases de música y arte en Torrevieja" description="Música, pintura, talleres creativos y español para extranjeros en ArtKHome Studio, Torrevieja." active="/es/">
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> Centro creativo · Torrevieja</p>
+      <h1>Clases de música<br />y arte <em>en Torrevieja</em></h1>
+      <p class="hero-intro">Un centro creativo para toda la familia. Música, arte y otras actividades para descubrir y compartir.</p>
+      <a class="button button-yellow" href={sitePath('/es/contacto/')}>Consultar clases y horarios <span aria-hidden="true">↗</span></a>
+      <p class="hero-script">Música<br />Arte<br /><span>Comunidad</span></p>
+    </div>
+    <figure class="hero-art"><img class="hero-image" src={sitePath('/images/artwork/hero-artwork.webp')} alt="Obra abstracta editorial: una forma cerámica azul, una esfera dorada y una línea oscura sobre papel marfil" fetchpriority="high" /><figcaption class="art-caption">CREAR<br />TAMBIÉN ES<br />COMPARTIR</figcaption></figure>
+    <div class="hero-footnote"><span>01 — 06</span><span>Encuentra tu actividad</span><span class="scroll-cue" aria-hidden="true">↓</span></div>
+  </section>
+
+  <section class="navigator wrap" aria-labelledby="navigator-title">
+    <div class="section-heading"><p class="eyebrow">Explora ArtKHome</p><h2 id="navigator-title">¿Qué te gustaría <em>descubrir?</em></h2></div>
+    <OfferingGrid />
+  </section>
+
+  <section class="music-band wrap">
+    <div class="music-intro"><p class="eyebrow">01 / Música</p><h2>Un primer paso.<br /><em>Tu propio ritmo.</em></h2><p>Clases para descubrir la música y avanzar paso a paso. Consulta por teléfono qué opciones y horarios están disponibles.</p><p class="music-age-callout"><b>3+</b><span>Desarrollo musical desde los 3 años</span></p><a class="text-link" href={sitePath('/es/clases-de-musica/')}>Explorar música <span aria-hidden="true">↗</span></a></div>
+    <div class="discipline-board"><p class="board-label">DISCIPLINAS</p><div class="discipline-list">{disciplines.map((item, i) => <span><b>0{i + 1}</b>{item}</span>)}</div><p class="board-foot">Disponibilidad y condiciones<br />por confirmar con el centro.</p></div>
+  </section>
+
+  <section class="proof-section">
+    <div class="proof-inner wrap"><div class="proof-stamp">TORREVIEJA<br /><span>10·05·2026</span></div><div><p class="eyebrow">Un momento compartido</p><h2>La música también<br /><em>sale al encuentro.</em></h2><p>Alumnos de Academia ArtKHome participaron en “Un conciertazo para todos”, junto a la Orquesta Casanovas, en el Teatro Municipal de Torrevieja.</p><a class="text-link text-link-light" href="https://www.diariodelavega.com/la-casanovas-orquesta-vuelve-a-llenar-el-teatro-de-torrevieja-en-su-tercer-family-concert/" target="_blank" rel="noreferrer">Leer la noticia <span aria-hidden="true">↗</span></a></div><div class="proof-note">Participación<br />documentada<br /><span>Diario de la Vega · 13.05.2026</span></div></div>
+  </section>
+
+  <section class="contact-strip wrap"><div><p class="eyebrow">Estamos en Torrevieja</p><h2>¿Qué actividad<br /><em>te interesa?</em></h2><p>Consulta directamente al centro las opciones disponibles.</p></div><div class="contact-stamp"><span class="stamp-ring">ARTKHOME<br />STUDIO<br /><b>✳</b><small>TORREVIEJA</small></span></div><a class="button button-dark" href={sitePath('/es/contacto/')}>Ver contacto <span aria-hidden="true">↗</span></a></section>
+</SiteLayout>

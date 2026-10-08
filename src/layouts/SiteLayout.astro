@@ -1,0 +1,55 @@
+---
+import { address, nav, phone, phoneDisplay, sitePath } from '../data/site';
+import '../styles/global.css';
+
+const { title, description, active = '' } = Astro.props;
+const root = sitePath('/es/');
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f0e4" />
+    <meta name="description" content={description} />
+    <title>{title} | ArtKHome Studio</title>
+    <link rel="icon" type="image/svg+xml" href={sitePath('/favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <a class="wordmark site-wordmark" href={root} aria-label="ArtKHome Studio, inicio" aria-current={active === root ? 'page' : undefined}>
+        <img class="brand-mark" src={sitePath('/images/brand/artkhome-mark.webp')} alt="" aria-hidden="true" width="54" height="54" />
+        <span class="brand-wordmark"><strong>ArtKHome</strong><small>Studio</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        {nav.map((item) => <a class:list={[active === item.href ? 'current' : '']} aria-current={active === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>)}
+      </nav>
+      <a class="header-cta" href={sitePath('/es/contacto/')}>Consultar <span aria-hidden="true">↗</span></a>
+      <details class="mobile-nav">
+        <summary aria-label="Abrir menú">Menú <span aria-hidden="true">＋</span></summary>
+        <nav aria-label="Navegación móvil">
+          <a aria-current={active === root ? 'page' : undefined} href={root}>Inicio</a>
+          {nav.map((item) => <a aria-current={active === item.href ? 'page' : undefined} href={item.href}>{item.label}</a>)}
+        </nav>
+      </details>
+    </header>
+    <main id="contenido"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <a class="wordmark wordmark-light" href={root} aria-label="ArtKHome Studio, inicio">
+          <span>ArtKHome</span><small>STUDIO</small>
+        </a>
+        <p class="footer-line">Música <i>·</i> arte <i>·</i> creatividad</p>
+        <a class="footer-cta" href={`tel:${phone}`}>Llamar al centro <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="footer-bottom">
+        <p>{address}</p>
+        <a href={`tel:${phone}`}>{phoneDisplay}</a>
+        <span>Instagram: @artkhome</span>
+      </div>
+      <p class="footer-note">Consulta por teléfono las actividades, horarios y condiciones disponibles.</p>
+      <p class="footer-credit">Sitio web desarrollado por el <a href="https://ministry-transformation.github.io/" target="_blank" rel="noopener noreferrer">Ministerio de Transformación</a>.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+---
+import { offerings } from '../data/site';
+const { compact = false } = Astro.props;
+---
+<div class:list={['offering-grid', compact && 'offering-grid-compact']}>
+  {offerings.map((item) => (
+    <a class="offering-card" href={item.href}>
+      <span class="offering-index">{item.number}</span>
+      <img class="offering-object" src={item.image} alt="" loading="lazy" decoding="async" />
+      <span class="offering-title">{item.title}</span>
+      <span class="offering-note">{item.note}</span>
+      <span class="offering-arrow" aria-hidden="true">↗</span>
+    </a>
+  ))}
+</div>

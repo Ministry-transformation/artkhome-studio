@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath } from '../../data/site';
+---
+<SiteLayout title="Español para extranjeros" description="Consulta las opciones de español para extranjeros que ofrece ArtKHome Studio en Torrevieja." active="/es/espanol-para-extranjeros/">
+  <section class="page-hero wrap"><p class="eyebrow">03 / Idiomas · Torrevieja</p><h1>El español,<br />más cerca <em>de ti.</em></h1><p class="page-lead">Español para extranjeros es una de las actividades indicadas por ArtKHome Studio. Consulta el nivel, el formato y los horarios disponibles.</p><a class="button button-yellow" href={sitePath('/es/contacto/')}>Consultar clases <span aria-hidden="true">↗</span></a><img class="page-art page-art-image" src={sitePath('/images/artwork/language-object.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" /></section>
+  <section class="content-section wrap language-layout"><div><p class="eyebrow">Una conversación directa</p><h2>Encuentra la<br /><em>opción adecuada.</em></h2><p>La información disponible confirma la actividad, pero no especifica niveles, método, modalidad ni idiomas de enseñanza. El centro puede orientarte sobre las opciones actuales.</p><a class="text-link" href={sitePath('/es/contacto/')}>Ver teléfono y ubicación <span aria-hidden="true">↗</span></a></div><div class="language-card"><span class="language-symbol" aria-hidden="true">¿</span><p>ESPAÑOL</p><span>para extranjeros</span><i></i><small>TORREVIEJA</small></div></section>
+  <section class="closing-cta"><div class="wrap closing-inner"><p class="eyebrow">Siguiente paso</p><h2>Pregunta por nivel<br /><em>y disponibilidad.</em></h2><a class="button button-yellow" href={sitePath('/es/contacto/')}>Llamar al centro <span aria-hidden="true">↗</span></a></div></section>
+</SiteLayout>
